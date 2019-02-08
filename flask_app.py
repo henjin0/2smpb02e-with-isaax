@@ -27,11 +27,11 @@ def cpu():
     press, temp = sensor.readData()
     
     am.send({
-                'created': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-                'd1': press,
-                'd2': temp
-                }
-            )
+        'created': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        'd1': press,
+        'd2': temp,
+    }
+    )
     #return jsonify(temperature=1, pressure=1)
     return jsonify(temperature=round(temp,2), pressure=round(press,2))
 
