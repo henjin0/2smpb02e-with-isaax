@@ -26,7 +26,7 @@ Highcharts.chart('chart', {
       }
     },
     title: {
-      text: 'Pressure'
+      text: '温度'
     },
     xAxis: {
       type: 'datetime'
