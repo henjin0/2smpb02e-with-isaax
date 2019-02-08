@@ -25,6 +25,7 @@ am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY);
 @app.route('/sensor')
 def cpu():
     press, temp = sensor.readData()
+    
     am.send({
                 'created': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 'd1': press,
