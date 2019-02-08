@@ -8,16 +8,28 @@ import datetime
 from flask import Flask
 from flask import render_template
 from flask import jsonify
+import os
+import ambient
 
 import grove_2smpb_02e
 
 sensor = grove_2smpb_02e.Grove2smpd02e()
 app = Flask(__name__)
 
+AMBIENT_CHANNEL_ID = int(os.environ['AMBIENT_CHANNEL_ID'])
+AMBIENT_WRITE_KEY = os.environ['AMBIENT_WRITE_KEY']
+CHECK_SPAN = int(os.environ.get('CHECK_SPAN', '30'))
+
+am = ambient.Ambient(AMBIENT_CHANNEL_ID, AMBIENT_WRITE_KEY);
 
 @app.route('/sensor')
 def cpu():
     press, temp = sensor.readData()
+    am.send({
+                'created': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'd1': press,
+                }
+            )
     #return jsonify(temperature=1, pressure=1)
     return jsonify(temperature=round(temp,2), pressure=round(press,2))
 
