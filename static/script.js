@@ -37,7 +37,7 @@ Highcharts.chart('chart', {
       }
     },
     series: [{
-      name: 'Pressure',
+      name: 'おんど！',
       data: (function () {
         let data = [],
             time = (new Date()).getTime(),
