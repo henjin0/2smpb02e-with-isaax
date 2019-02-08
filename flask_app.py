@@ -28,6 +28,7 @@ def cpu():
     am.send({
                 'created': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
                 'd1': press,
+                'd2': temp
                 }
             )
     #return jsonify(temperature=1, pressure=1)
