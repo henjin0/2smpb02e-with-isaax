@@ -33,7 +33,7 @@ Highcharts.chart('chart', {
     },
     yAxis: {
       title: {
-        text: 'hPa' 
+        text: '℃' 
       }
     },
     series: [{
